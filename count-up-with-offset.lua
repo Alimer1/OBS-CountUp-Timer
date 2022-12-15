@@ -79,7 +79,10 @@ function reset(pressed)
 	if not pressed then
 		return
 	end
-
+	if start_timer then
+		start_timer = false
+        obs.timer_remove(timer_callback)
+	end
 	activate(false)
 	local source = obs.obs_get_source_by_name(source_name)
 	if source ~= nil then
